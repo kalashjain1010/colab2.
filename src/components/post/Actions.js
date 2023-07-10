@@ -10,24 +10,26 @@ import {
 import { useToggleLike, useDeletePost } from "hooks/posts";
 import { Link } from "react-router-dom";
 import { PROTECTED } from "lib/routes";
-import { useComments } from "hooks/comments";
+// import { useComments } from "hooks/comments";
 
 export default function Actions({ post }) {
-  const { id, likes, uid } = post;
-  const { user, isLoading: userLoading } = useAuth();
 
-  const isLiked = likes.includes(user?.id);
-  const config = {
-    id,
-    isLiked,
-    uid: user?.id,
-  };
-
-  const { toggleLike, isLoading: likeLoading } = useToggleLike(config);
-  const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
-  const { comments, isLoading: commentsLoading } = useComments(id);
-
-  return (
+    const { id, likes, uid } = post;
+    const { user, isLoading: userLoading } = useAuth();
+    
+    const isLiked = likes.includes(user?.id);
+    const config = {
+        id,
+        isLiked,
+        uid: user?.id,
+    };
+    
+    const { toggleLike, isLoading: likeLoading } = useToggleLike({id,isLiked, uid: user?.id});
+    const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
+    // const { comments, isLoading: commentsLoading } = useComments(id);
+    
+    return (
+        <>
     <Flex p="2">
       <Flex alignItems="center">
         <IconButton
@@ -38,35 +40,38 @@ export default function Actions({ post }) {
           variant="ghost"
           icon={isLiked ? <FaHeart /> : <FaRegHeart />}
           isRound
-        />
+          />
         {likes.length}
       </Flex>
       <Flex alignItems="center" ml="2">
         <IconButton
-          as={Link}
-          to={`${PROTECTED}/comments/${id}`}
-          isLoading={commentsLoading}
-          size="md"
-          colorScheme="teal"
-          variant="ghost"
-          icon={comments?.length === 0 ? <FaRegComment /> : <FaComment />}
-          isRound
+        as={Link}
+        to={`${PROTECTED}/comments/${id}`}
+        // isLoading={commentsLoading}
+        size="md"
+        colorScheme="teal"
+        variant="ghost"
+        icon={ <FaRegComment /> }
+        isRound
         />
-        {comments?.length}
-      </Flex>
+        {/* {comments?.length} */}
+        </Flex>
+        
+        {!userLoading && user.id === uid && (
+            <IconButton
+            ml="auto"
+            onClick={deletePost}
+            isLoading={deleteLoading}
+            size="md"
+            colorScheme="red"
+            variant="ghost"
+            icon={<FaTrash />}
+            isRound
+            />
+            )}
+        </Flex>
 
-      {!userLoading && user.id === uid && (
-        <IconButton
-          ml="auto"
-          onClick={deletePost}
-          isLoading={deleteLoading}
-          size="md"
-          colorScheme="red"
-          variant="ghost"
-          icon={<FaTrash />}
-          isRound
-        />
-      )}
-    </Flex>
+        </>
+  
   );
-}
+    }

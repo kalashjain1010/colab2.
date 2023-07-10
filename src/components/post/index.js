@@ -1,6 +1,7 @@
 import { Box,Text } from '@chakra-ui/react'
 import React from 'react'
 import Header from './Header';
+import Actions from './Actions';
 
 function Post({post}) {
     const {text} =post;
@@ -15,7 +16,7 @@ function Post({post}) {
         </Text>
       </Box>
 
-      {/* <Actions post={post} /> */}
+      <Actions post={post} />
     </Box>
   </Box>
   )
