@@ -1,0 +1,34 @@
+.landing{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+.heading{
+    font-size: large;
+    font-weight: bolder;
+}
+.subhead{
+    margin-top: 20px;
+    /* border: 2px solid red; */
+    width: 600px;
+}
+
+.getStarted{
+    margin-top: 20px;
+    background: #000;
+    color: aliceblue;
+    border-radius: 5%;
+    border-width: 5px;
+    border-color: black;
+    padding: 5px;
+    box-shadow: inset;
+    /* width: max-content; */
+    /* align: center; */
+}
+
+.landingImage{
+  /* flex-direction: row-reverse; */
+  position: absolute;
+  margin-left: 50%;
+  margin-top: 0;
+}
