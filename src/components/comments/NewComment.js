@@ -2,6 +2,7 @@ import { Box, Button, Flex, Input } from "@chakra-ui/react";
 import Avatar from "components/profile/Avatar";
 import { useAuth } from "hooks/auth";
 import { useAddComment } from "hooks/comments";
+// import { useAddComment } from "hooks/comments";
 import { useForm } from "react-hook-form";
 
 export default function NewComment({ post }) {
@@ -14,7 +15,9 @@ export default function NewComment({ post }) {
   });
 
   function handleAddComment(data) {
-    addComment(data.text);
+    addComment(
+     data.text,
+    );
     reset();
   }
 
@@ -25,7 +28,7 @@ export default function NewComment({ post }) {
       <Flex padding="4">
         <Avatar user={user} size="sm" />
         <Box flex="1" ml="4">
-          <form onSubmit={handleSubmit(handleAddComment)}>
+          <form onSubmit={handleSubmit(handleAddComment)} >
             <Box>
               <Input
                 size="sm"

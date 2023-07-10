@@ -14,7 +14,7 @@ function Comments() {
     <>
     <Box align="center" pt={50}>
       <Post post={post} />
-      <NewComment />
+      <NewComment post={post} />
     </Box>
     </>
   )
