@@ -4,6 +4,7 @@ import Register from "components/auth/Register";
 import Layout from "components/layout";
 import Dashboard from "components/dashboard";
 import LandingPage from "components/layout/Lamding";
+import Comments from "components/comments";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -12,6 +13,7 @@ export const PROTECTED = "/protected"
 export const DASHBOARD = "/protected/dashboard"
 export const USERS = "/protected/users"
 export const PROFILE = "/protected/profile/:id"
+export const COMMENTS = "/protected/comments/:id"
 
 export const router = createBrowserRouter([
     {path: ROOT, element: <LandingPage/>},
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
         {
             path: PROFILE,
             element:"PROFILE ID sdsd maa",
+        },
+        {
+            path: COMMENTS,
+            element: <Comments/>,
         }
     ]
     }
