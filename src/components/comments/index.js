@@ -4,6 +4,7 @@ import { usePost } from "hooks/posts";
 import React from "react";
 import { useParams } from "react-router-dom";
 import NewComment from "./NewComment";
+import CommentList from "./CommentList";
 
 function Comments() {
   const {id} = useParams();
@@ -15,6 +16,7 @@ function Comments() {
     <Box align="center" pt={50}>
       <Post post={post} />
       <NewComment post={post} />
+      <CommentList post={post} />
     </Box>
     </>
   )

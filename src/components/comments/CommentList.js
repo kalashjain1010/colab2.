@@ -1,6 +1,6 @@
-import { Box } from "@chakra-ui/react";
+// import { Box } from "@chakra-ui/react";
 import { useComments } from "hooks/comments";
-import Comment from "./Comment";
+// import Comment from "./index";
 
 export default function CommentList({ post }) {
   const { id } = post;
@@ -8,11 +8,10 @@ export default function CommentList({ post }) {
 
   if (isLoading) return "Loading...";
 
-  return (
-    <Box>
-      {comments.map((comment) => (
-        <Comment key={comment.id} comment={comment} />
-      ))}
-    </Box>
-  );
+  return comments.map((comment) => (
+    <>
+      {comment.text}
+      <br />
+    </>
+  ));
 }
