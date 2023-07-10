@@ -46,8 +46,8 @@ export function useAddPost(){
 }
 
 export function usePosts(uid = null) {
-    const q = query(collection(db,"posts"))
+    const q = query(collection(db,"posts"),orderBy('date',"desc"))
     const [posts, isLoading, error] = useCollectionData(q);
     if (error) throw error;
-    return { posts, isLoading };
+    return { posts, isLoading }; 
   }
